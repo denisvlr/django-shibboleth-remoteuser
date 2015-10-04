@@ -37,6 +37,8 @@ class ShibbolethRemoteUserMiddleware(RemoteUserMiddleware):
             if request.user.is_authenticated():
                 self._remove_invalid_user(request)
             return
+        if not username:
+            return
         # If the user is already authenticated and that user is the user we are
         # getting passed in the headers, then the correct user is already
         # persisted in the session and we don't need to continue.
